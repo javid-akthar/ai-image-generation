@@ -1,8 +1,7 @@
-import express from 'express';
-import { v2 as cloudinary } from 'cloudinary';
+import express from "express";
+import { v2 as cloudinary } from "cloudinary";
 
-import Post from '../mongodb/models/post.js';
-
+import Post from "../mongodb/models/post.js";
 
 const router = express.Router();
 
@@ -12,16 +11,21 @@ cloudinary.config({
   api_secret: "LJEeJ6KGOTyyN8EShnGSm-c8T-Y",
 });
 
-router.route('/').get(async (req, res) => {
+router.route("/").get(async (req, res) => {
   try {
     const posts = await Post.find({});
     res.status(200).json({ success: true, data: posts });
   } catch (err) {
-    res.status(500).json({ success: false, message: 'Fetching posts failed, please try again' });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Fetching posts failed, please try again",
+      });
   }
 });
 
-router.route('/').post(async (req, res) => {
+router.route("/").post(async (req, res) => {
   try {
     const { name, prompt, photo } = req.body;
     const photoUrl = await cloudinary.uploader.upload(photo);
@@ -34,7 +38,12 @@ router.route('/').post(async (req, res) => {
 
     res.status(200).json({ success: true, data: newPost });
   } catch (err) {
-    res.status(500).json({ success: false, message: 'Unable to create a post, please try again' });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Unable to create a post, please try again",
+      });
   }
 });
 
