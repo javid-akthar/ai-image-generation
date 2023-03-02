@@ -1,4 +1,11 @@
-# Build and Deploy a Full Stack MERN AI Image Generation App  MidJourney & DALL E Clone
-![Image Generation App](https://i.ibb.co/p0f27C2/Thumbnail-9.png)
 
-### Launch your development career with project-based coaching - https://www.jsmastery.pro
+# AI-image-generation
+
+This application uses Dalle API to generate images with description, and also supports sharing the images in a community forum
+
+##steps to follow
+- clone the project
+- navigate to client and give npm run dev
+- navigate to server and give npm start
+- inside client project frontend update the server url
+
